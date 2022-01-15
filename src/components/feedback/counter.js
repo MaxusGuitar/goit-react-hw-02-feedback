@@ -1,11 +1,22 @@
 import React, { Component } from "react";
+import FeedbackOptions from "./FeedbackOptions";
+import Statistics from "./Statistics";
 
 class Counter extends Component {
   state = {
     goodValue: this.props.good,
     neutralValue: this.props.neutral,
     badValue: this.props.bad,
+    visible: false,
   }; // вместо конструктора
+
+  Show = () => {
+    this.setState({ visible: true });
+  };
+
+  Hide = () => {
+    this.setState({ visible: false });
+  };
 
   Good = () => {
     this.setState((prewState) => {
@@ -15,7 +26,7 @@ class Counter extends Component {
     });
   };
 
-  Normal = () => {
+  Neutral = () => {
     this.setState((prewState) => {
       return {
         neutralValue: prewState.neutralValue + 1,
@@ -34,18 +45,20 @@ class Counter extends Component {
   render() {
     return (
       <div>
-        <span>{this.state.goodValue}</span>
-        <button type="button" onClick={this.Good}>
-          GOOD
-        </button>
-        <span>{this.state.neutralValue}</span>
-        <button type="button" onClick={this.Normal}>
-          NORMAL
-        </button>
-        <span>{this.state.badValue}</span>
-        <button type="button" onClick={this.Bad}>
-          BAD
-        </button>
+        <h1>Please leave feedback</h1>
+        <FeedbackOptions
+          onGood={this.Good}
+          onNeutral={this.Neutral}
+          onBad={this.Bad}
+          onHide={this.Hide}
+          onShow={this.Show}
+        />
+        <h1>Statistics</h1>
+        <Statistics
+          onGoodValue={this.state.goodValue}
+          onNeutralValue={this.state.neutralValue}
+          onBadValue={this.state.badValue}
+        />
       </div>
     );
   }
