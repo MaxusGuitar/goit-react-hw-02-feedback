@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import FeedbackOptions from "./FeedbackOptions";
 import Statistics from "./Statistics";
 import Notification from "./Notification";
+import style from "./main.module.css";
 
-class Counter extends Component {
+class Main extends Component {
   state = {
     goodValue: this.props.good,
     neutralValue: this.props.neutral,
@@ -79,4 +80,4 @@ class Counter extends Component {
   }
 }
 
-export default Counter;
+export default Main;

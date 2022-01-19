@@ -1,9 +1,9 @@
-import Counter from "./components/feedback/counter";
+import Main from "./components/Main";
 
 export default function App() {
   return (
     <div>
-      <Counter good={0} neutral={0} bad={0} />
+      <Main good={0} neutral={0} bad={0} />
     </div>
   );
 }
