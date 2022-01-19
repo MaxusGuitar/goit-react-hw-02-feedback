@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import FeedbackOptions from "./FeedbackOptions";
 import Statistics from "./Statistics";
 import Notification from "./Notification";
+import Section from "./Section";
 import style from "./main.module.css";
 
 class Main extends Component {
@@ -55,15 +56,16 @@ class Main extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Please leave feedback</h1>
+      <Section title={"Please, leave a feedback!"}>
         <FeedbackOptions
           options={["good", "neutral", "bad"]}
           onLeaveFeedback={this.onLeaveFeedback}
         />
         <h1>Statistics</h1>
-        {this.onLeaveFeedback === 0 ? (
-          <Notification message="There is no feedback" />
+        {this.state.goodValue === 0 &&
+        this.state.neutralValue === 0 &&
+        this.state.badValue === 0 ? (
+          <Notification message="There is no feedback...." />
         ) : (
           this.state.visible && (
             <Statistics
@@ -75,7 +77,7 @@ class Main extends Component {
             />
           )
         )}
-      </div>
+      </Section>
     );
   }
 }
