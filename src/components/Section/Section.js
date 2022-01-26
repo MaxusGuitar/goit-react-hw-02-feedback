@@ -10,5 +10,5 @@ export default function Section({ title, children }) {
 }
 Section.propTypes = {
   title: propTypes.string,
-  children: propTypes.array,
+  children: propTypes.node,
 };
